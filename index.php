@@ -14,8 +14,8 @@ include_once('connect.php');
         $isi = '';
         $tgl_awal = '';
         $tgl_akhir = '';
-        $id = $_GET['id'];
         if (isset($_GET['id'])){
+            $id=$_GET['id'];
             $queri1 = mysqli_query($mysqli, "SELECT * FROM kegiatan WHERE id='$id'");
             while ($row1 = mysqli_fetch_array($queri1)){
                 $isi = $row1['isi'];
@@ -32,11 +32,11 @@ include_once('connect.php');
             </div>
             <div class="col">
                 <label for="EDate" class="visually-hidden">Tanggal Awal</label>
-                <input type="text" class="form-control" name="newEDate" placeholder="Tanggal Awal" value="<?php echo $tgl_awal ?>">
+                <input type="date" class="form-control" name="newEDate" placeholder="Tanggal Awal" value="<?php echo $tgl_awal ?>">
             </div>
             <div class="col">
                 <label for="LDate" class="visually-hidden">Tanggal Akhir</label>
-                <input type="text" class="form-control" name="newLDate" placeholder="Tanggal Akhir" value="<?php echo $tgl_akhir ?>">
+                <input type="date" class="form-control" name="newLDate" placeholder="Tanggal Akhir" value="<?php echo $tgl_akhir ?>">
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-primary rounded-pill px-3" name="save">Simpan</button>
@@ -67,12 +67,11 @@ include_once('connect.php');
                 </td>
             </tr>
         <?php } 
-        $simpan = $_POST['save'];
-        $id_baru = $_POST['id'];
-        $isi_baru = $_POST['newCont'];
-        $tgl_awal_baru = $_POST['newEDate'];
-        $tgl_akhir_baru = $_POST['newLDate'];
-        if (isset($simpan)){
+        if (isset($_POST['save'])){
+            $id_baru = $_POST['id'];
+            $isi_baru = $_POST['newCont'];
+            $tgl_awal_baru = $_POST['newEDate'];
+            $tgl_akhir_baru = $_POST['newLDate'];
             if (isset($id_baru)){
                 if (isset($isi_baru)){
                     if (isset($tgl_awal_baru)){
@@ -80,7 +79,7 @@ include_once('connect.php');
                             $queri3 = mysqli_query($mysqli, "UPDATE kegiatan SET 
                                 isi='$isi_baru',
                                 tgl_awal='$tgl_awal_baru',
-                                tgl_akhir='$tgl_akhir_baru' WHERE id='$=$id_baru'");
+                                tgl_akhir='$tgl_akhir_baru' WHERE id='$id_baru'");
                         } else{
                             echo "<script>alert('Silakan lengkapi bagian Tanggal Akhir!')</script>";
                         }
@@ -96,9 +95,10 @@ include_once('connect.php');
             } 
             header("Location: index.php");
         }
-        $aksi = $_GET['aksi'];
-        $status = $_GET['status'];
-        if (isset($aksi)){
+        if (isset($_GET['aksi'])){
+            $aksi=$_GET['aksi'];
+            $status = $_GET['status'];
+            $id=$_GET['id'];
             if ($aksi == 'hapus'){
                 $queri5 = mysqli_query($mysqli, "DELETE FROM kegiatan WHERE id='$id'");
             } else  if ($aksi == 'ubah_status'){
