@@ -51,51 +51,51 @@ include_once('connect.php');
                 </div>
             </div>
         </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Isi</th>
-            <th scope="col">Tanggal Awal</th>
-            <th scope="col">Tanggal Akhir</th>
-            <th scope="col">Status</th>
-            <th scope="col">Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php 
-        $i= 1;
-        $queri2 = mysqli_query($mysqli, "SELECT * FROM kegiatan 
-            ORDER BY status, tgl_awal");
-        while ($row2 = mysqli_fetch_array($queri2)){?>
-            <tr>
-                <th scope="row"><?php echo $i++ ?></th>
-                <td><?php echo $row2['isi'] ?></td>
-                <td><?php echo $row2['tgl_awal'] ?></td>
-                <td><?php echo $row2['tgl_akhir'] ?></td>
-                <td>
-                    <?php
-                    if ($row2['status'] =='1'){?>
-                    <a class="btn btn-success rounded-pill px-3" type="button" 
-                        href="index.php?id=<?php echo $row2['id']?>
-                            &aksi=ubah_status&status=0">Sudah</a>
-                    <?php } else{?>
-                    <a class="btn btn-warning rounded-pill px-3" type="button" 
-                        href="index.php?id=<?php echo $row2['id']?>
-                            &aksi=ubah_status&status=1">Belum</a>
-                    <?php } ?>
-                </td>
-                <td>
-                    <a class="btn btn-info rounded-pill px-3" 
-                        href="index.php?id=<?php echo $row2['id'] ?>">Ubah</a>
-                    <a class="btn btn-danger rounded-pill px-3" 
-                        href="index.php?id=<?php echo $row2['id']?>
-                            &aksi=hapus">Hapus</a>
-                </td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Isi</th>
+                    <th scope="col">Tanggal Awal</th>
+                    <th scope="col">Tanggal Akhir</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $i= 1;
+                $queri2 = mysqli_query($mysqli, "SELECT * FROM kegiatan 
+                    ORDER BY status, tgl_awal");
+                while ($row2 = mysqli_fetch_array($queri2)){?>
+                    <tr>
+                        <th scope="row"><?php echo $i++ ?></th>
+                        <td><?php echo $row2['isi'] ?></td>
+                        <td><?php echo $row2['tgl_awal'] ?></td>
+                        <td><?php echo $row2['tgl_akhir'] ?></td>
+                        <td>
+                            <?php
+                            if ($row2['status'] =='1'){?>
+                            <a class="btn btn-success rounded-pill px-3" type="button" 
+                                href="index.php?id=<?php echo $row2['id']?>
+                                    &aksi=ubah_status&status=0">Sudah</a>
+                            <?php } else{?>
+                            <a class="btn btn-warning rounded-pill px-3" type="button" 
+                                href="index.php?id=<?php echo $row2['id']?>
+                                    &aksi=ubah_status&status=1">Belum</a>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <a class="btn btn-info rounded-pill px-3" 
+                                href="index.php?id=<?php echo $row2['id'] ?>">Ubah</a>
+                            <a class="btn btn-danger rounded-pill px-3" 
+                                href="index.php?id=<?php echo $row2['id']?>
+                                    &aksi=hapus">Hapus</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
