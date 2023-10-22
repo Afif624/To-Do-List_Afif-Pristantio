@@ -114,17 +114,15 @@ if (isset($_POST['save'])){
                         isi='$isi_baru',
                         tgl_awal='$tgl_awal_baru',
                         tgl_akhir='$tgl_akhir_baru' WHERE id='$id_baru'");
+                    header("Location: index.php"); 
                 } else{
-                    echo "<script>alert('Silakan lengkapi 
-                        bagian Tanggal Akhir!')</script>";
+                    echo "<script>alert('Silakan lengkapi bagian Tanggal Akhir!')</script>";
                 }
             } else{
-                echo "<script>alert('Silakan lengkapi 
-                    bagian Tanggal Awal!')</script>";
+                echo "<script>alert('Silakan lengkapi bagian Tanggal Awal!')</script>";
             } 
         } else{
-            echo "<script>alert('Silakan lengkapi 
-                bagian Isi!')</script>";
+            echo "<script>alert('Silakan lengkapi bagian Isi!')</script>";
         }           
     } else if (!empty($isi_baru)){
         if (!empty($tgl_awal_baru)){
@@ -132,19 +130,16 @@ if (isset($_POST['save'])){
                 $queri4 = mysqli_query($mysqli, "INSERT INTO 
                     kegiatan(isi,tgl_awal,tgl_akhir,status) VALUES(
                         '$isi_baru','$tgl_awal_baru','$tgl_akhir_baru','0')");
+                header("Location: index.php"); 
             } else{
-                echo "<script>alert('Silakan lengkapi 
-                    bagian Tanggal Akhir!')</script>";
+                echo "<script>alert('Silakan lengkapi bagian Tanggal Akhir!')</script>";
             }
         } else{
-            echo "<script>alert('Silakan lengkapi 
-                bagian Tanggal Awal!')</script>";
+            echo "<script>alert('Silakan lengkapi bagian Tanggal Awal!')</script>";
         } 
     } else{
-        echo "<script>alert('Silakan lengkapi 
-            bagian Isi!')</script>";
+        echo "<script>alert('Silakan lengkapi bagian Isi!')</script>";
     }      
-    header("Location: index.php"); 
 }
 if (isset($_GET['aksi'])){
 $aksi=$_GET['aksi'];
